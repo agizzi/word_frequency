@@ -39,7 +39,10 @@ def print_word_freq(file):
     for go_word in go_words:
             word_count.update({go_word: go_words.count(go_word)})
 
-    print(word_count)
+    # print(word_count)
+    words_sorted = sorted(word_count.items(), key=lambda x: x[1], reverse=True)
+    print(words_sorted)
+
 
 
 if __name__ == "__main__":
