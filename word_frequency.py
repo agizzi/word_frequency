@@ -5,11 +5,18 @@ STOP_WORDS = [
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
     'will', 'with'
 ]
+
+
 def clean_text(text):
-        text = text.strip(string.punctuation)
-        if text[-2:] == "'s":
-            text = text[:-2]
-        return text
+    text = text.strip(string.punctuation)
+    if text[-2:] == "'s":
+        text = text[:-2]
+    return text
+
+
+def get_longest_word(words):
+    return sorted(words, key=len, reverse=True)[0]
+# print(words_sorted_by_length)
 
 
 def print_word_freq(file):
@@ -19,7 +26,6 @@ def print_word_freq(file):
     with open(file) as text_file:
         text_contents = text_file.read().lower()
         words = (text_contents.split())
-
 
     def clean_text(text):
         text = text.strip(string.punctuation)
@@ -37,12 +43,15 @@ def print_word_freq(file):
     word_count = {}
 
     for go_word in go_words:
-            word_count.update({go_word: go_words.count(go_word)})
+        word_count.update({go_word: go_words.count(go_word)})
 
     # print(word_count)
     words_sorted = sorted(word_count.items(), key=lambda x: x[1], reverse=True)
-    print(words_sorted)
+    longest_word_len = len(get_longest_word(words))
+    # print(words_sorted)
 
+    for word, value in words_sorted[:10]:
+        print(word.rjust(longest_word_len), "|",  str(value), "*" * value)
 
 
 if __name__ == "__main__":
