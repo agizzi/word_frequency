@@ -5,6 +5,11 @@ STOP_WORDS = [
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
     'will', 'with'
 ]
+def clean_text(text):
+        text = text.strip(string.punctuation)
+        if text[-2:] == "'s":
+            text = text[:-2]
+        return text
 
 
 def print_word_freq(file):
@@ -24,18 +29,6 @@ def print_word_freq(file):
         if text[-2:] == "'s":
             text = text[:-2]
         return text
-
-    # print(words)
-
-    # def clean_text(text):
-    #     # Given a test, return teh text with no spaces or punctuation and all lowercased.
-    #     # text = text.lower()
-    #     all_letters = "abcdefghijklmnopqrstuvwxyz"
-    #     text_to_keep = ""
-    #     for char in text:
-    #         if char in all_letters:
-    #             text_to_keep += char
-    #     return text_to_keep
 
     clean_words = []
 
