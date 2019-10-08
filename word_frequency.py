@@ -1,3 +1,5 @@
+import string
+
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
@@ -13,19 +15,27 @@ def print_word_freq(file):
 
     if text_file.mode == "r":
         text_contents = text_file.read().lower()
-
+    
     words = (text_contents.split())
-    # print(words)
+
 
     def clean_text(text):
-        # Given a test, return teh text with no spaces or punctuation and all lowercased.
-        # text = text.lower()
-        all_letters = "abcdefghijklmnopqrstuvwxyz"
-        text_to_keep = ""
-        for char in text:
-            if char in all_letters:
-                text_to_keep += char
-        return text_to_keep
+        text = text.strip(string.punctuation)
+        if text[-2:] == "'s":
+            text = text[:-2]
+        return text
+
+    # print(words)
+
+    # def clean_text(text):
+    #     # Given a test, return teh text with no spaces or punctuation and all lowercased.
+    #     # text = text.lower()
+    #     all_letters = "abcdefghijklmnopqrstuvwxyz"
+    #     text_to_keep = ""
+    #     for char in text:
+    #         if char in all_letters:
+    #             text_to_keep += char
+    #     return text_to_keep
 
     clean_words = []
 
@@ -37,7 +47,7 @@ def print_word_freq(file):
     word_count = {}
 
     for go_word in go_words:
-        word_count.update({go_word: go_words.count(go_word)})
+            word_count.update({go_word: go_words.count(go_word)})
 
     print(word_count)
 
