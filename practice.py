@@ -3,7 +3,7 @@ STOP_WORDS = [
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
     'will', 'with'
 ]
-# print(STOP_WORDS)
+
 
 print('Hey!!')
 text_file = open("seneca_falls.txt", "r")
@@ -13,12 +13,11 @@ if text_file.mode == "r":
 
 
 words = (text_contents.split())
-# print(words)
+
 
 
 def clean_text(text):
-    # Given a test, return teh text with no spaces or punctuation and all lowercased.
-    # text = text.lower()
+    # Given a test, return the text with no spaces or punctuation and all lowercased.
     all_letters = "abcdefghijklmnopqrstuvwxyz"
     text_to_keep = ""
     for char in text:

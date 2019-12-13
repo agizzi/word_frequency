@@ -16,13 +16,10 @@ def clean_text(text):
 
 def get_longest_word(words):
     return sorted(words, key=len, reverse=True)[0]
-# print(words_sorted_by_length)
 
 
 def print_word_freq(file):
     """Read in `file` and print out the frequency of words in that file."""
-    # pass
-    print('Hey!!')
     with open(file) as text_file:
         text_contents = text_file.read().lower()
         words = (text_contents.split())
@@ -45,10 +42,10 @@ def print_word_freq(file):
     for go_word in go_words:
         word_count.update({go_word: go_words.count(go_word)})
 
-    # print(word_count)
+
     words_sorted = sorted(word_count.items(), key=lambda x: x[1], reverse=True)
     longest_word_len = len(get_longest_word(words))
-    # print(words_sorted)
+    
 
     for word, value in words_sorted[:10]:
         print(word.rjust(longest_word_len), "|",  str(value), "*" * value)
